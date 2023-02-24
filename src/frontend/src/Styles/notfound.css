@@ -1,0 +1,16 @@
+.notfound-message .alert {
+    font-size:1.4em;
+    padding:1.5em;
+    text-align: center;
+    display:flex;
+    align-items: center;
+}
+
+.notfound-404 {
+    padding-right:0.3em;
+}
+
+
+.notfound-text{
+    margin-top:0.2em;
+}

@@ -1,0 +1,188 @@
+.minTjenesteplan h1 {
+    margin-top: 1rem;
+}
+
+.minTjenesteplan .datepicker {
+    margin-bottom: 5rem;
+}
+
+.mintjenesteplan-footer-menu {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    z-index: 11;
+    display: flex;
+    flex-flow: column;
+    height:100%;
+    pointer-events: none;
+}
+
+.mintjenesteplan-footer-menu--showitems {
+    height: 100%;
+    pointer-events: all;
+}
+
+.mintjenesteplan-footer-menu-spacer {
+    margin-bottom:auto;
+}
+
+.mintjenesteplan-footer-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #ddd;
+    padding-bottom: 0.4rem;
+    padding-top: 0.5rem;
+    pointer-events: all;
+}
+
+.mintjenesteplan-footer-minedager:hover,
+.mintjenesteplan-footer-edit:hover {
+    cursor:pointer;
+}
+
+.mintjenesteplan-footer-minedager,
+.mintjenesteplan-footer-edit {
+    display: flex;
+    align-items: center;
+}
+
+.mintjenesteplan-footer-edit {
+    margin-left: auto;
+}
+
+.mintjenesteplan-footer-minedager i {
+    font-size: 1.4rem;
+    margin-left: 1rem;
+    margin-top: 0.2rem;
+}
+
+.mintjenesteplan-footer-minedager span {
+    font-size: 1.2rem;
+    margin-bottom: 0.3brem;
+    margin-left: 0.5rem;
+}
+
+.mintjenesteplan-footer-edit i {
+    margin-right: 0.3rem;
+    font-size: 1.5rem;
+    color: black;
+}
+
+.mintjenesteplan-footer-edit span {
+    margin-bottom: 0.2rem;
+    display: inline-block;
+    font-size: 1.1rem;
+    margin-right: 1rem;
+}
+
+.mintjenesteplan-footer-items {
+    list-style-type: none;
+    font-size: 1.5rem;
+    width: 100%;
+    z-index: 11;
+    background-color: #ddd;
+    padding-top: 1rem;
+    padding:0;
+    margin-bottom:0;
+    overflow-y: hidden;
+    max-height:0;
+
+	transition-property: max-height;
+	transition-duration: 1s;
+    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.mintjenesteplan-footer-items--show {
+    overflow-y: auto;
+
+	transition-property: max-height;
+	transition-duration: 2.5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    max-height: 100%;
+}
+
+.mintjenesteplan-footer-items li {
+    padding:1rem;
+    display:flex;
+    align-content: center;
+}
+
+.mintjenesteplan-footer-items li:last-child {
+    border-bottom: 1px solid black;
+    padding-bottom: 2rem;
+}
+
+.mintjenesteplan-footer-items i {
+    margin-right: 0.7rem;
+    margin-top: 0.5rem;
+    width: 1.4rem;
+    height: 1.4rem;
+    display: inline-block;
+}
+
+.mintjenesteplan-footer-items .ferie {
+    background-color: red;
+}
+
+.minTjenesteplan .datepickerDay--selected {
+    border: 2px solid #333;
+}
+
+.minTjenesteplan.minTjenesteplan--selectRangeActive .datepickerDay--selected {
+    border: 2px solid red;
+}
+
+.mintjenesteplan-footer-actionitems {
+    list-style-type: none;
+    font-size: 1.1rem;
+    width: 60%;
+    z-index: 11;
+    background-color: #ddd;
+    padding-top: 1rem;
+    padding:0;
+    margin-bottom:0;
+    overflow-y: hidden;
+    max-height:0;
+    margin-left: auto;
+
+	transition-property: max-height;
+	transition-duration: 1s;
+    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.mintjenesteplan-footer-actionitems--show {
+	transition-property: max-height;
+	transition-duration: 2.5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    max-height: 10rem;
+    pointer-events: all;
+}
+
+.mintjenesteplan-footer-actionitems li {
+    display:flex;
+    align-content: center;
+    padding-left:1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-top: 1px solid #bbb;
+    border-left: 1px solid #bbb;
+}
+
+.mintjenesteplan-footer-actionitems li:last-child {
+    border-bottom: 1px solid #bbb;
+    padding-bottom: 0.5rem;
+}
+
+.mintjenesteplan-footer-actionitems li a {
+    display:flex;
+    align-items:center;
+    color:black;
+}
+
+.mintjenesteplan-footer-actionitems i {
+    margin-right: 0.5rem;
+    width: 1.4rem;
+    height: 1.4rem;
+    display: inline-block;
+}

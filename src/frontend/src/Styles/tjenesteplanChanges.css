@@ -1,0 +1,19 @@
+.tjenesteplanChanges .textbox {
+    display:flex;
+    flex-direction: column;
+    margin-left:2rem;
+    width:100%;
+}
+
+.tjenesteplanChanges table td {
+    vertical-align: middle;
+}
+
+.tjenesteplanChanges button {
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.tjenesteplanChanges .table-scroll td.sticky-column:nth-child(1) {
+    background-color:#e9ecef;
+}

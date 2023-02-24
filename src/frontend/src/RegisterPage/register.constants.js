@@ -1,0 +1,7 @@
+export const registerConstants = {
+    START_GET_INVITATION: 'START_GET_INVITATION',
+    GET_INVITATION_SUCCEEDED: 'GET_INVITATION_SUCCEEDED',
+    GET_INVITATION_FAILED: 'GET_INVITATION_FAILED'
+};
+
+export default registerConstants;

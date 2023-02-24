@@ -1,0 +1,97 @@
+.datepickerDay--helligdag,
+.datepickerDay--helligdag.datepickerDay-dagsplan {
+    color: #ee323a;
+}
+
+/* Vanlig arbeidsdag */
+.datepickerDay--dagsplan-0 {
+    background-color:#eee;
+}
+
+/* Døgnvakt */
+.datepickerDay--dagsplan-1 {
+    background-color:#00D1A7;
+    color: white;
+}
+
+/* Nattevakt */
+.datepickerDay--dagsplan-2 {
+    background-color:#0092D1;
+    color: white;
+}
+
+/* Fri etter vakt */
+.datepickerDay--dagsplan-3 {
+    background-color:#D1A700;
+    color: white;
+}
+
+/* Dagvakt */
+.datepickerDay--dagsplan-4 {
+    background-color:lawngreen;
+    color: white;
+}
+
+/* Permisjon */
+.datepickerDay--dagsplan-5 {
+    background-color:rgb(106, 98, 151);
+    color: white;
+}
+
+/* Ferie */
+.datepickerDay--dagsplan-6 {
+    background-color:#ffc107;
+    color: white;
+}
+
+/* Fordypning / Forskning */
+.datepickerDay--dagsplan-7 {
+    background-color: #ffc107;
+    color: white;
+}
+
+/* Avspasering */
+.datepickerDay--dagsplan-8 {
+    background-color:rgb(78, 184, 78);
+    color: white;
+}
+
+/* Ukesavspasering */
+.datepickerDay--dagsplan-9 {
+    background-color:rgb(106, 130, 134);
+    color: white;
+}
+
+/* Kurs / Konferanse / Møte */
+.datepickerDay--dagsplan-10 {
+    background-color:rgb(117, 117, 117);
+    color: white;
+}
+
+/* Universitet */
+.datepickerDay--dagsplan-11 {
+    background-color:darkturquoise;
+    color: white;
+}
+
+/* Sykdom */
+.datepickerDay--dagsplan-12 {
+    background-color:firebrick;
+    color: white;
+}
+
+/* Forslag til vaktbytte */
+.datepickerDay--dagsplan-100 {
+    background-color:#b6df03;
+    color: white;
+}
+
+.datepickerDay--dagsplan-101 {
+    background-color:#A700D1;
+    color: white;
+}
+
+.datepickerDay--dagsplan-102 {
+    background-color:rgb(0, 185, 209);
+    color: white;
+}

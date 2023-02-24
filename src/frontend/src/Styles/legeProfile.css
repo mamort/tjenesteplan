@@ -1,0 +1,22 @@
+.legeProfile {
+    margin-left:1.5rem;
+}
+
+.legeProfile table {
+    font-size:1.5rem;
+    margin-bottom:2rem;
+}
+
+.legeProfile-value {
+    word-break: break-all;
+}
+
+.legeProfile ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+.legeProfile-avdeling {
+    width:15rem;
+}

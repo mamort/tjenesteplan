@@ -1,0 +1,9 @@
+
+.vaktbytter button {
+    margin-left:2rem;
+}
+
+.vaktbytter .textbox {
+    display:flex;
+    flex-direction: column;
+}

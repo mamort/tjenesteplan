@@ -1,0 +1,21 @@
+.tjenesteplanInfo-header {
+    margin-bottom:2rem;
+}
+
+.tjenesteplanInfo-header h1 {
+    margin-bottom: 3px;
+}
+
+.tjenesteplanInfo-header h4 {
+    color:#777;
+    font-size:1.3em;
+    text-transform: uppercase;
+}
+
+.tjenesteplanInfo-addLege {
+    margin-bottom:2rem;
+}
+
+.tjenesteplanInfo-leger table td {
+    vertical-align: middle;
+}

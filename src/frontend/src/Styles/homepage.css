@@ -1,0 +1,25 @@
+.homepage-box-link {
+    margin-bottom:1rem;
+}
+
+.homepage-box-link div {
+    height: 5rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    font-size: 1.6rem;
+}
+
+.homepage-box-link.btn-block+.btn-block {
+    margin-top:0;
+}
+
+.homepage-box-link {
+    float: left;
+    width: 20rem;
+    margin: 0;
+    margin-right: 1rem;
+    margin-bottom:0.5rem;
+    white-space:normal;
+}

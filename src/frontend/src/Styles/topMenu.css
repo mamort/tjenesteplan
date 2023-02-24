@@ -1,0 +1,301 @@
+.tjenesteplan-header {
+    background: #374347;
+    color:white;
+}
+
+.tjenesteplan-header-top {
+    width: 100%;
+    z-index: 10;
+    display: flex;
+    align-items: center;
+    padding: 0px 1rem 0;
+    height: 3.5rem;
+    flex-direction:row-reverse;
+}
+
+@media (min-width: 992px)  {
+    .tjenesteplan-header-top {
+        flex-direction: row;
+    }
+}
+
+.tjenesteplan-header-menu-expanded .tjenesteplan-hamburger-menu {
+    transform: none;
+}
+
+.tjenesteplan-hamburger-menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    background: #374347;
+    z-index: 10;
+    width: 100%;
+    padding-top: 3.5rem;
+    padding-bottom: 2rem;
+
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+.tjenesteplan-hamburger-menu-logout {
+    align-self: flex-end;
+    margin-right: 2rem;
+}
+
+.tjenesteplan-header .dripicons-menu {
+    font-size:1.5rem;
+}
+
+.tjenesteplan-header-menu {
+    list-style: none;
+    width:100%;
+    font-size:1.3rem;
+    padding: 0;
+    margin: 0;
+    font-weight: 300;
+    font-family: 'Lato', Arial, sans-serif;
+    transition:margin .5s;
+    margin:0 0 0 -550px;
+    display: flex;
+    margin: 0;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.tjenesteplan-header-menu li {
+    padding-left: 1rem;
+    padding-top: 0.3rem;
+}
+
+.tjenesteplan-header-menu-section {
+    min-width: 20rem;
+}
+
+.tjenesteplan-header-menu-logout a.btn:hover {
+    text-decoration: none;
+}
+
+.tjenesteplan-header-menu-section span {
+    color: #7c7c7c;
+    font-weight: bold;
+}
+
+.tjenesteplan-header-menu-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.tjenesteplan-header-menu-section a:hover {
+    text-decoration: underline;
+}
+
+.tjenesteplan-header-menu a {
+    color:white;
+    text-decoration: none;
+}
+
+.tjenesteplan-header-top-wrapper {
+    display: flex;
+    width: 100%;
+    margin-right: 1rem;
+}
+
+.tjenesteplan-header-logo {
+    font-size:1.5rem;
+    margin-left: 1rem;
+    margin-bottom: 0.3rem;
+    z-index:10;
+    width:100%;
+}
+
+.tjenesteplan-header-logo a {
+    color:white;
+}
+
+.tjenesteplan-header-notifications {
+    display:flex;
+    align-items: center;
+    margin-left:1rem;
+}
+
+.tjenesteplan-header-notifications .badge {
+    position: absolute;
+    margin-left: 0.9rem;
+    margin-top: 0.2rem;
+    color: white;
+    background-color: #ff4d5e;
+    font-family:monospace;
+    align-self: baseline;
+}
+
+.tjenesteplan-header-notifications--any {
+    animation: ring 1.5s ease;
+    animation-delay: 0s;
+}
+
+.tjenesteplan-header-notifications:hover {
+    color: #ccc;
+    cursor:pointer;
+}
+
+@keyframes ring {
+    0% {
+        transform: rotate(35deg);
+    }
+    12.5% {
+        transform: rotate(-30deg);
+    }
+    25% {
+        transform: rotate(25deg);
+    }
+    37.5% {
+        transform: rotate(-20deg);
+    }
+    50% {
+        transform: rotate(15deg);
+    }
+    62.5% {
+        transform: rotate(-10deg);
+    }
+    75% {
+        transform: rotate(5deg);
+    }
+    100% {
+        transform: rotate(0deg);
+    }
+}
+
+.tjenesteplan-header-notifications i {
+    font-size: 1.3rem;
+    height: 1.8rem;
+}
+
+.tjenesteplan-header-username {
+    margin-left: 1rem;
+    z-index: 10;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+}
+
+.tjenesteplan-header-username i {
+    height: 20px;
+    width: 16px;
+}
+
+
+.tjenesteplan-header-username span {
+    margin-left: 0.5rem;
+}
+
+.tjenesteplan-hamburger
+{
+  display: block;
+  position: relative;
+
+  z-index: 10;
+
+  margin-top: 0.3rem;
+
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+.tjenesteplan-hamburger input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+
+  cursor: pointer;
+
+  opacity: 0; /* hide this */
+  z-index: 11; /* and place it over the hamburger */
+
+  -webkit-touch-callout: none;
+}
+
+ .tjenesteplan-hamburger span
+ {
+   display: block;
+   width: 2rem;
+   height: 4px;
+   margin-bottom: 5px;
+   position: relative;
+
+   background: white;
+   border-radius: 3px;
+
+   z-index: 10;
+
+   transform-origin: 0.25rem 0;
+
+   transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+               background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+               opacity 0.55s ease;
+ }
+
+ .tjenesteplan-hamburger span:first-child
+ {
+   transform-origin: 0% 0%;
+ }
+
+ .tjenesteplan-hamburger span:nth-last-child(2)
+ {
+   transform-origin: 0% 100%;
+ }
+
+ /*
+  * Transform all the slices of hamburger
+  * into a crossmark.
+  */
+.tjenesteplan-hamburger input:checked ~ span
+ {
+   opacity: 1;
+   transform: rotate(45deg) translate(-1px, 0);
+ }
+
+ /*
+  * But let's hide the middle one.
+  */
+.tjenesteplan-hamburger input:checked ~ span:nth-last-child(3)
+ {
+   opacity: 0;
+   transform: rotate(0deg) scale(0.2, 0.2);
+ }
+
+ /*
+  * Ohyeah and the last one should go the other direction
+  */
+.tjenesteplan-hamburger input:checked ~ span:nth-last-child(2)
+ {
+   transform: rotate(-45deg) translate(0, 0);
+ }
+
+
+ .tjenesteplan-breadcrumb {
+     padding: 0px 1rem 0;
+     border-top: 1px solid #777;
+     white-space: nowrap;
+     display:flex;
+     align-items: center;
+     overflow-x:auto;
+ }
+
+ .tjenesteplan-breadcrumb i {
+    line-height: 1;
+    margin-top: 0.2rem;
+ }
+
+ .tjenesteplan-breadcrumb-item {
+     padding-top:0.3rem;
+     padding-bottom:0.3rem;
+     display: inline-block;
+     color:white;
+ }

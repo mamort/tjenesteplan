@@ -1,0 +1,30 @@
+.tjenesteplan-notifications {
+    position: absolute;
+    z-index: 1;
+    width: 22rem;
+    margin-top: 4rem;
+    top:0;
+    left:50%;
+    margin-left:-11rem;
+}
+
+@media (min-width: 576px)  {
+    .tjenesteplan-notifications {
+        margin-left:-20rem;
+        left:auto;
+    }
+}
+
+.tjenesteplan-notifications .toast {
+    background-color:white;
+    opacity:100;
+    color:black;
+}
+
+.tjenesteplan-notifications .toast strong {
+    margin-left:0.5rem;
+}
+
+.tjenesteplan-notifications .toast:not(:last-child) {
+    margin-bottom: .4rem;
+}

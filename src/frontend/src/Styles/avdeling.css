@@ -1,0 +1,15 @@
+.avdeling-listeforer-box {
+    height: auto;
+    width:20rem;
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.avdeling-listeforer-box div {
+    height:auto;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-direction: column;
+    font-size: 1.3rem;
+}

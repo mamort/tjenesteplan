@@ -1,0 +1,194 @@
+.weeklyTjenesteplan .table-scroll th:nth-child(2),
+.weeklyTjenesteplan .table-scroll td:nth-child(2)  {
+    left:60.5px;
+}
+
+.weeklyTjenesteplan .today {
+    border-bottom: 1px solid #aaa;
+    border-top: 1px solid #aaa;
+}
+
+.weeklyTjenesteplan .holiday {
+    color: #CC0000 !important;
+    vertical-align: middle;
+}
+
+.weeklyTjenesteplan .weekday--selected {
+    border: 2px solid #222 !important;
+    padding: 0.65rem;
+}
+
+/* Disable individual table scroll for large devices */
+@media (min-width: 992px)  {
+    .weeklyTjenesteplan .table-scroll {
+        overflow-x: inherit;
+    }
+}
+
+.weeklyTjenesteplan .table-scroll td,
+.weeklyTjenesteplan .table-scroll th
+{
+    font-family: helvetica;
+    font-size: 0.95rem;
+}
+
+.weeklyTjenesteplan .table-scroll td {
+    border-top:0;
+    word-break: break-word;
+    min-width: 7rem;
+}
+
+.weeklyTjenesteplan-footer-menu {
+    position: fixed;
+    bottom: 0px;
+    width: 100%;
+    z-index: 11;
+    display: flex;
+    flex-flow: column;
+    height:100%;
+    pointer-events: none;
+}
+
+.weeklyTjenesteplan-footer-menu-spacer {
+    margin-bottom:auto;
+}
+
+.weeklyTjenesteplan-footer-menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    background-color: #ddd;
+    padding-bottom: 0.2rem;
+    padding-top: 0.5rem;
+    pointer-events: all;
+}
+
+.weeklyTjenesteplan-footer-edit:hover {
+    cursor:pointer;
+}
+
+.weeklyTjenesteplan-footer-edit {
+    display: flex;
+    align-items: center;
+    width:100%;
+}
+
+.weeklyTjenesteplan-footer-edit a {
+    display:flex;
+}
+
+.weeklyTjenesteplan-footer-edit i {
+    margin-right: 0.3rem;
+    font-size: 1.2rem;
+}
+
+.weeklyTjenesteplan-footer-edit i,
+.weeklyTjenesteplan-footer-edit a {
+    color:#777;
+}
+
+.weeklyTjenesteplan-footer-edit--selected i,
+.weeklyTjenesteplan-footer-edit--selected a {
+    color: darkblue;
+}
+
+.weeklyTjenesteplan-footer-edit span {
+    margin-bottom: 0.2rem;
+    display: inline-block;
+    font-size: 1.1rem;
+    margin-right: 1rem;
+}
+
+.weeklyTjenesteplan-footer-edit > span {
+    margin-left:1rem;
+}
+
+.weeklyTjenesteplan-footer-edit .footer-spacer-left {
+    margin-left: auto;
+}
+
+.weeklyTjenesteplan-footer-items {
+    list-style-type: none;
+    font-size: 1.5rem;
+    width: 100%;
+    z-index: 11;
+    background-color: #ddd;
+    padding-top: 1rem;
+    padding:0;
+    margin-bottom:0;
+    overflow-y: hidden;
+    max-height:0;
+
+	transition-property: max-height;
+	transition-duration: 1s;
+    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.weeklyTjenesteplan-footer-actionitems {
+    list-style-type: none;
+    font-size: 1.1rem;
+    width: 100%;
+    z-index: 11;
+    background-color: #ddd;
+    padding-top: 1rem;
+    padding:0;
+    margin-bottom:0;
+    overflow-y: hidden;
+    max-height:0;
+    margin-left: auto;
+
+	transition-property: max-height;
+	transition-duration: 1s;
+    transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+}
+
+.weeklyTjenesteplan-footer-actionitems--show {
+	transition-property: max-height;
+	transition-duration: 2.5s;
+	transition-timing-function: cubic-bezier(0, 1, 0.5, 1);
+    max-height: 100%;
+    pointer-events: all;
+}
+
+.weeklyTjenesteplan-footer-actionitems li {
+    display:flex;
+    align-content: center;
+    padding-left:1rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+    border-top: 1px solid #bbb;
+    border-left: 1px solid #bbb;
+}
+
+.weeklyTjenesteplan-footer-actionitems li:last-child {
+    border-bottom: 1px solid #bbb;
+    padding-bottom: 0.5rem;
+}
+
+.weeklyTjenesteplan-footer-actionitems li a {
+    display:flex;
+    align-items:center;
+    color:black;
+}
+
+.weeklyTjenesteplan-footer-actionitems i {
+    margin-right: 0.5rem;
+    width: 1.4rem;
+    height: 1.4rem;
+    display: inline-block;
+}
+
+.weeklyTjenesteplan-footer-actionitems i.dripicons-arrow-thin-right {
+    margin-left:0.5rem;
+    margin-top:0.2rem;
+}
+
+.weeklyTjenesteplan-footer-actionitems--save > div {
+    margin-top: 0.25rem;
+    display: flex;
+}
+
+.weeklyTjenesteplan-footer-actionitems--save .btn {
+    margin-left: auto;
+    margin-right: 1rem;
+}

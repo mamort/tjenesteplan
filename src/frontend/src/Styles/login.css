@@ -1,0 +1,13 @@
+.login-col {
+    margin-bottom:1rem;
+}
+
+.login-header {
+    float: right;
+    margin-right: 2rem;
+    margin-top: 0.5rem;
+}
+
+.login-header a {
+    margin-left:1rem;
+}

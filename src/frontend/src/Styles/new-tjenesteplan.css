@@ -1,0 +1,47 @@
+.new-tjenesteplan-date,
+.new-tjenesteplan-day
+{
+    min-width: auto !important;
+    white-space: nowrap;
+    width: 5rem;
+}
+
+.new-tjenesteplan .table-scroll th:nth-child(2),
+.new-tjenesteplan .table-scroll td:nth-child(2)  {
+    left:99.5px;
+}
+
+.new-tjenesteplan-legePicker {
+    min-width:10rem;
+}
+
+.dagsplanPicker {
+    max-width: 55rem;
+}
+
+.dagsplanPicker-list {
+    padding:0;
+    margin-right:1rem;
+    margin-bottom:1rem;
+}
+
+.dagsplanPicker-list li {
+    cursor: pointer;
+    list-style: none;
+    padding: 1rem;
+    float: left;
+    width: 16rem;
+    text-align: center;
+}
+
+.dagsplanPicker li:hover {
+    background-color:#ccc;
+}
+
+.new-tjenesteplan-config form {
+    width:20em;
+}
+
+.change-tjenesteplan-name input {
+    width: 20rem;
+}

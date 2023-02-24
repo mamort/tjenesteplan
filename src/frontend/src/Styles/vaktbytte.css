@@ -1,0 +1,77 @@
+.top-header-spacing {
+    margin-top: 5rem;
+}
+
+.top-header {
+    overflow: hidden;
+    background-color: #e2e2e2;
+    position: fixed; /* Set the navbar to fixed position */
+    top: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    padding: 0.2rem;
+    padding-top: 0.4rem;
+    color: black;
+    padding-left: 0.5rem;
+    z-index: 10;
+    border-bottom: 1px solid #bbb;
+}
+
+.bottom-header {
+    overflow: hidden;
+    background-color: #e2e2e2;
+    position: fixed; /* Set the navbar to fixed position */
+    bottom: 0; /* Position the navbar at the top of the page */
+    width: 100%; /* Full width */
+    padding: 0.7rem;
+    color: black;
+    padding-left: 0.5rem;
+    z-index: 1000;
+    border-top: 1px solid #bbb;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.bottom-header-spacing {
+    margin-bottom: 5rem;
+}
+
+.top-header h3 {
+    text-align: center;
+}
+
+
+.bottom-header .btn {
+    margin-right: 1rem;
+}
+
+.textbox {
+    padding: 2rem 1rem;
+    margin-bottom: 2rem;
+    background-color: #e9ecef;
+    border-radius: .3rem;
+}
+
+.vaktbytte-bottom-header {
+    flex-direction: column;
+}
+
+.vaktbytte-bottom-header-buttons,
+.vaktbytte-bottom-header-buttons > div {
+    display:flex;
+}
+
+.vaktbytte-top-header {
+    text-align: center;
+}
+
+.vaktbytte-selectedDay {
+    padding-bottom: 0.2rem;
+    border-bottom: 1px solid #999;
+    margin-bottom: 0.6rem;
+    width: 100%;
+}
+
+.vaktbytte .datepickerDay--marked {
+    animation: glowing 1500ms infinite;
+}

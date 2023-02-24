@@ -1,0 +1,20 @@
+{
+    "$schema":"http://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion":"1.0.0.0",
+    "parameters":{
+       "sqlAdministratorLogin":{
+          "value":"databaseAdmin"
+       },
+       "sqlAdministratorLoginPassword":{
+          "reference": {
+            "keyVault": {
+                "id": "/subscriptions/5f76d3dc-bcd6-478a-af91-04350c6842b2/resourceGroups/tjenesteplan-dev-secrets-rg/providers/Microsoft.KeyVault/vaults/tplan-dev-secrets2-kv"
+            },
+            "secretName": "database--sqlAdministratorLoginPassword"
+          }
+       },
+       "alwaysOn": {
+          "value": false
+       }
+    }
+ }

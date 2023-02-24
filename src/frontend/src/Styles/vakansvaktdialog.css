@@ -1,0 +1,13 @@
+.vakansvaktdialog-reason {
+    display:flex;
+    flex-direction: column;
+    margin-top:1rem;
+}
+
+.vakansvaktdialog-reason span {
+    margin-bottom:0.2rem;
+}
+
+.vakansvaktdialog-reason textarea {
+    height:8rem;
+}

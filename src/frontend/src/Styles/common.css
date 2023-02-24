@@ -1,0 +1,135 @@
+/* Common */
+.body {
+    clear:both;
+}
+.absolute-position {
+    position:absolute;
+}
+
+a {
+    color: #0a437f;
+}
+
+.fill-height {
+    height:100%;
+}
+
+.fill-width {
+    width:100%;
+}
+
+.center-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.centered-content-wrapper {
+    display:table;
+    height:100%;
+}
+
+.centered-content-wrapper > div {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+@keyframes blink {
+    0% {
+           background-color: rgba(0,133,106,1)
+    }
+    50% {
+           background-color: rgba(0,209,167,1)
+    }
+    100% {
+           background-color: rgba(0,133,106,1)
+    }
+}
+@-webkit-keyframes blink {
+    0% {
+           background-color: rgba(0,133,106,1)
+    }
+    50% {
+           background-color: rgba(0,209,167,1)
+    }
+    100% {
+           background-color: rgba(0,133,106,1)
+    }
+}
+
+ .blink {
+    -moz-transition:all 0.5s ease-in-out;
+    -webkit-transition:all 0.5s ease-in-out;
+    -o-transition:all 0.5s ease-in-out;
+    -ms-transition:all 0.5s ease-in-out;
+    transition:all 0.5s ease-in-out;
+    -moz-animation:blink normal 1.5s infinite ease-in-out;
+    /* Firefox */
+    -webkit-animation:blink normal 1.5s infinite ease-in-out;
+    /* Webkit */
+    -ms-animation:blink normal 1.5s infinite ease-in-out;
+    /* IE */
+    animation:blink normal 1.5s infinite ease-in-out;
+    /* Opera */
+}
+
+.link-menu {
+    float:left;
+    display:none;
+}
+
+.alert-display {
+    transition: opacity 1.5s;
+    opacity:1;
+    z-index: 999;
+    position:fixed;
+    width:100%;
+    display:block;
+    border-radius: 0;
+}
+
+.alert-hide {
+    position:fixed;
+    transition: opacity 1.5s;
+    opacity: 0;
+    display:none;
+}
+
+.alert .alert-close {
+    float:right;
+    cursor:pointer;
+    padding-top:0.1rem;
+}
+
+.table-scroll {
+    overflow-x:auto;
+}
+
+.table-scroll table {
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table-scroll th, td
+{
+    z-index: -1
+}
+
+.table-scroll th.sticky-column,
+.table-scroll td.sticky-column
+{
+    left:0px;
+    position: -webkit-sticky; /* for Safari */
+    position: sticky;
+    z-index:5;
+}
+
+.table-scroll th.sticky-column:nth-child(1),
+.table-scroll th.sticky-column:nth-child(2) {
+    background-color:#e9ecef
+}
+
+.table-scroll td.sticky-column:nth-child(1),
+.table-scroll td.sticky-column:nth-child(2) {
+    background-color: white;
+}

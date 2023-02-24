@@ -1,0 +1,95 @@
+
+.datepicker h2 {
+    text-align:center;
+}
+
+.datepickerMonth {
+    margin-bottom:1rem;
+    font-size:1rem;
+}
+
+.datepickerMonth table {
+    width:100%;
+}
+
+.datepickerMonth th {
+    text-transform: uppercase;
+    font-size: 1rem;
+    font-family: consolas;
+}
+
+.datepickerMonth td {
+    vertical-align: middle;
+    text-align: center;
+}
+
+.datepickerMonth th,
+.datepickerMonth td .wrapper,
+.datepickerMonth .weekNr {
+    width: 2.2rem;
+    height: 2rem;
+    text-align: center;
+    padding:0.08rem;
+    margin: 0 auto;
+}
+
+.datepickerMonth .weekNr {
+    background-color:#ccc;
+    margin-right:0.1rem;
+}
+
+.datepickerMonth td {
+    padding:0;
+    margin:0;
+}
+
+.datepickerDay {
+    display:flex;
+    justify-content: center;
+    height:100%;
+    border-radius: 6px;
+    margin-right: 0.05rem;
+}
+
+/* Only enable hover for desktops and really large devices */
+@media (min-width: 992px)  {
+    .datepickerDay--selectable:hover {
+    background-color: rgb(228, 231, 231);
+    color:black;
+    }
+}
+
+.datepickerDay--selectable {
+    cursor:pointer;
+}
+
+.datepickerDay span {
+    align-self: center;
+}
+
+
+.datepickerDay--highlighted {
+    background-color: #ccc;
+}
+
+.datepickerDay--helligdag,
+.datepickerDay--highlighted {
+    color:white;
+}
+
+.datepickerDay--selected {
+    border:2px solid red;
+}
+
+@keyframes glowing {
+    0% { box-shadow: 0 0 -10px #807f8a; }
+    40% { box-shadow: 0 0 20px #807f8a; }
+    60% { box-shadow: 0 0 20px #807f8a; }
+    100% { box-shadow: 0 0 -10px #807f8a; }
+}
+
+.datepickerDay--glow,
+.datepickerDay--dagsplan-100 /* Forslag til vaktbytte */ {
+    animation: glowing 1500ms infinite;
+}
+

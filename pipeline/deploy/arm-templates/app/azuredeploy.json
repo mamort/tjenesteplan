@@ -1,0 +1,266 @@
+{
+    "$schema":
+      "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "webAppName": {
+        "type": "string",
+        "metadata": {
+          "description": "The name of the web app that you wish to create."
+        }
+      },
+      "functionAppName": {
+        "type": "string",
+        "metadata": {
+          "description": "The name of the function app that you wish to create."
+        }
+      },
+      "environment": {
+        "type": "string",
+        "metadata": {
+          "description": "The environment in use (dev, test, prod)."
+        }
+      },
+      "sqlAdministratorLogin": {
+        "type": "string",
+        "metadata": {
+          "description": "The admin user of the SQL Server"
+        }
+      },
+      "sqlAdministratorLoginPassword": {
+        "type": "securestring",
+        "metadata": {
+          "description": "The password of the admin user of the SQL Server"
+        }
+      },
+      "websiteBaseUrl": {
+        "type": "string",
+        "metadata": {
+          "description": "The base url used for the Tjenesteplan website."
+        }
+      },
+      "alwaysOn": {
+        "type": "bool"
+      }
+    },
+    "variables": {
+      "appNameShort": "[substring(parameters('webAppName'),0,5)]",
+      "appServicePlanName": "[concat(variables('appNameshort'),'-asp-', uniquestring(resourceGroup().id))]",
+      "funcHostingPlanName": "[concat(variables('appNameshort'),'-func-', uniquestring(resourceGroup().id))]",
+      "sqlserverName": "[concat('tjenesteplan-', parameters('environment'), '-db')]",
+      "databaseName": "Tjenesteplan",
+      "applicationInsightsName": "tjenesteplan-ai",
+      "storageAccountName": "[concat('tjenesteplan', parameters('environment'), 'sa')]",
+      "storageAccountid": "[concat(resourceGroup().id,'/providers/','Microsoft.Storage/storageAccounts/', variables('storageAccountName'))]"
+    },
+    "resources": [
+      {
+        "type": "Microsoft.Storage/storageAccounts",
+        "name": "[variables('storageAccountName')]",
+        "apiVersion": "2018-07-01",
+        "location": "[resourceGroup().location]",
+        "kind": "StorageV2",
+        "sku": {
+          "name": "Standard_LRS"
+        }
+      },
+      {
+        "apiVersion": "2016-03-01",
+        "name": "[variables('appServicePlanName')]",
+        "type": "Microsoft.Web/serverfarms",
+        "location": "[resourceGroup().location]",
+        "properties": {
+          "name": "[variables('appServicePlanName')]"
+        },
+        "sku": {
+          "name": "F1",
+          "tier": "Basic",
+          "size": "1",
+          "family": "S",
+          "capacity": 1
+        }
+      },
+      {
+        "apiVersion": "2016-03-01",
+        "name": "[parameters('webAppName')]",
+        "type": "Microsoft.Web/sites",
+        "location": "[resourceGroup().location]",
+        "identity": {
+          "type": "SystemAssigned"
+        },
+        "properties": {
+          "name": "[parameters('webAppName')]",
+          "serverFarmId": "[resourceId('Microsoft.Web/serverFarms',variables('appServicePlanName'))]",
+          "siteConfig": {
+            "alwaysOn": "[parameters('alwaysOn')]",
+            "http20Enabled": true,
+            "ftpsState": "Disabled"
+          }
+        },
+        "resources": [
+          {
+            "apiVersion": "2015-08-01",
+            "dependsOn": [
+              "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
+            ],
+            "name": "appsettings",
+            "properties": {
+              "Environment": "[parameters('environment')]",
+              "ASPNETCORE_DETAILEDERRORS": "true",
+              "APPINSIGHTS_INSTRUMENTATIONKEY": "[reference(resourceId('microsoft.insights/components/', variables('applicationInsightsName')), '2015-05-01').InstrumentationKey]",
+              "BaseUrl": "[parameters('websiteBaseUrl')]",
+              "AppSecretsKeyVaultUrl": "[concat('https://tplan-', parameters('environment'), '-secrets2-kv.vault.azure.net')]",
+              "Database:DefaultConnection": "[concat('Data Source=tcp:', reference(concat('Microsoft.Sql/servers/', variables('sqlserverName'))).fullyQualifiedDomainName, ',1433;Initial Catalog=', variables('databaseName'), ';User Id=', parameters('sqlAdministratorLogin'), '@', reference(concat('Microsoft.Sql/servers/', variables('sqlserverName'))).fullyQualifiedDomainName, ';Password={sqlAdministratorLoginPassword};')]",
+              "StorageConnectionString": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]",
+              "ApplicationInsightsAgent_EXTENSION_VERSION": "~2",
+              "XDT_MicrosoftApplicationInsights_Mode": "recommended",
+              "InstrumentationEngine_EXTENSION_VERSION": "~1",
+              "DiagnosticServices_EXTENSION_VERSION": "~3",
+              "APPINSIGHTS_PROFILERFEATURE_VERSION": "1.0.0",
+              "XDT_MicrosoftApplicationInsights_BaseExtensions": "~1"
+            },
+            "tags": {
+              "displayName": "appSettings"
+            },
+            "type": "config"
+          },
+          {
+            "apiVersion": "2015-08-01",
+            "dependsOn": [
+              "[resourceId('Microsoft.Web/sites', parameters('webAppName'))]"
+            ],
+            "name": "connectionstrings",
+            "properties": {
+            },
+            "type": "config"
+          }
+        ],
+        "dependsOn": [
+          "[resourceId('Microsoft.Web/serverFarms/',variables('appServicePlanName'))]"
+        ]
+      },
+      {
+        "type": "Microsoft.Web/serverfarms",
+        "apiVersion": "2018-02-01",
+        "name": "[variables('funcHostingPlanName')]",
+        "location": "[resourceGroup().location]",
+        "sku": {
+          "name": "Y1",
+          "tier": "Dynamic"
+        },
+        "properties": {
+          "name": "[variables('funcHostingPlanName')]",
+          "computeMode": "Dynamic"
+        }
+      },
+      {
+        "apiVersion": "2015-08-01",
+        "type": "Microsoft.Web/sites",
+        "name": "[parameters('functionAppName')]",
+        "location": "[resourceGroup().location]",
+        "kind": "functionapp",
+        "dependsOn": [
+          "[resourceId('Microsoft.Web/serverfarms', variables('funcHostingPlanName'))]",
+          "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]"
+        ],
+        "properties": {
+          "serverFarmId": "[resourceId('Microsoft.Web/serverfarms', variables('funcHostingPlanName'))]",
+          "siteConfig": {
+            "alwaysOn": "[parameters('alwaysOn')]",
+            "http20Enabled": true,
+            "ftpsState": "Disabled",
+            "appSettings": [
+              {
+                "name": "AzureWebJobsStorage",
+                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+              },
+              {
+                "name": "WEBSITE_CONTENTAZUREFILECONNECTIONSTRING",
+                "value": "[concat('DefaultEndpointsProtocol=https;AccountName=', variables('storageAccountName'), ';AccountKey=', listKeys(variables('storageAccountid'),'2015-05-01-preview').key1)]"
+              },
+              {
+                "name": "WEBSITE_CONTENTSHARE",
+                "value": "[toLower(parameters('functionAppName'))]"
+              },
+              {
+                "name": "FUNCTIONS_EXTENSION_VERSION",
+                "value": "~3"
+              },
+              {
+                "name": "APPINSIGHTS_INSTRUMENTATIONKEY",
+                "value": "[reference(resourceId('microsoft.insights/components/', variables('applicationInsightsName')), '2015-05-01').InstrumentationKey]"
+              },
+              {
+                "name": "FUNCTIONS_WORKER_RUNTIME",
+                "value": "dotnet"
+              },
+              {
+                "name": "WebApiBaseUrl",
+                "value": "[concat('https://', parameters('webAppName'), '.azurewebsites.net')]"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "apiVersion": "2018-05-01-preview",
+        "name": "[variables('applicationInsightsName')]",
+        "type": "microsoft.insights/components",
+        "location": "[resourceGroup().location]",
+        "tags": {
+          "[concat('hidden-link:', resourceGroup().id, '/providers/Microsoft.Web/sites/', variables('applicationInsightsName'))]": "Resource"
+        },
+        "properties": {
+          "ApplicationId": "[variables('applicationInsightsName')]",
+          "Request_Source": "IbizaWebAppExtensionCreate"
+        }
+      },
+        {
+        "name": "[variables('sqlserverName')]",
+        "type": "Microsoft.Sql/servers",
+        "location": "[resourceGroup().location]",
+        "tags": {
+          "displayName": "SqlServer"
+        },
+        "apiVersion": "2014-04-01",
+        "properties": {
+          "administratorLogin": "[parameters('sqlAdministratorLogin')]",
+          "administratorLoginPassword": "[parameters('sqlAdministratorLoginPassword')]",
+          "version": "12.0"
+        },
+        "resources": [
+          {
+            "name": "[variables('databaseName')]",
+            "type": "databases",
+            "location": "[resourceGroup().location]",
+            "tags": {
+              "displayName": "Database"
+            },
+            "apiVersion": "2015-01-01",
+            "dependsOn": [
+              "[variables('sqlserverName')]"
+            ],
+            "properties": {
+              "edition": "Basic",
+              "collation": "SQL_Latin1_General_CP1_CI_AS",
+              "maxSizeBytes": "1073741824",
+              "requestedServiceObjectiveName": "Basic"
+            }
+          },
+          {
+            "type": "firewallrules",
+            "apiVersion": "2014-04-01",
+            "dependsOn": [
+              "[variables('sqlserverName')]"
+            ],
+            "location": "[resourceGroup().location]",
+            "name": "AllowAllWindowsAzureIps",
+            "properties": {
+              "endIpAddress": "0.0.0.0",
+              "startIpAddress": "0.0.0.0"
+            }
+          }
+        ]
+      }
+    ]
+  }

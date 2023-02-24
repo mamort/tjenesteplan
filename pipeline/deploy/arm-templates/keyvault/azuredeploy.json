@@ -1,0 +1,78 @@
+{
+    "$schema":
+      "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "webAppName": {
+        "type": "string",
+        "metadata": {
+          "description": "The name of the web app."
+        }
+      },
+      "environment": {
+        "type": "string",
+        "metadata": {
+          "description": "The environment in use (dev, test, prod)."
+        }
+      },
+      "tjenesteplanDevelopersAADGroupObjectId": {
+        "type": "string",
+        "metadata": {
+          "description": "The object id of the AAD group holding the developers of tjenesteplan"
+        }
+      }
+    },
+    "variables": {
+      "keyVaultName": "[concat('tplan-', parameters('environment'), '-secrets2-kv')]",
+      "webAppResourceGroup": "[concat('tjenesteplan-', parameters('environment'), '-rg')]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.KeyVault/vaults",
+            "name": "[variables('keyVaultName')]",
+            "apiVersion": "2018-02-14",
+            "location": "[resourceGroup().location]",
+            "properties": {
+                "enabledForDeployment": false,
+                "enabledForDiskEncryption": false,
+                "enabledForTemplateDeployment": true,
+                "tenantId": "[subscription().tenantId]",
+                "accessPolicies": [
+                    {
+                        "tenantId": "[subscription().tenantId]",
+                        "objectId": "[reference(resourceId(variables('webAppResourceGroup'), 'Microsoft.Web/sites', parameters('webAppName')), '2016-08-01', 'Full').identity.principalId]",
+                        "permissions": {
+                        "secrets": [
+                                "get",
+                                "list"
+                            ]
+                        }
+                    },
+                    {
+                      "tenantId": "[subscription().tenantId]",
+                      "objectId": "[parameters('tjenesteplanDevelopersAADGroupObjectId')]",
+                      "permissions": {
+                      "secrets": [
+                              "get",
+                              "list"
+                          ]
+                      }
+                  }
+                ],
+                "sku": {
+                "name": "standard",
+                "family": "A"
+                },
+                "networkAcls": {
+                "value": {
+                    "defaultAction": "Allow",
+                    "bypass": "AzureServices"
+                }
+                }
+            }
+        }
+    ]
+  }
+
+
+

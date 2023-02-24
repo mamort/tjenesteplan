@@ -1,0 +1,42 @@
+.vakansvakter {
+    margin-top:1rem;
+}
+
+.vakansvakter h1 {
+    margin-bottom:1rem;
+}
+
+.vakansvakter .textbox {
+    display:flex;
+    margin-left:2rem;
+    align-items: center;
+}
+
+.vakansvakter strong {
+    margin-right: 1rem;
+}
+
+.vakansvakter .textbox span {
+    align-self: center;
+    margin-right:1rem;
+}
+
+.vakansvakt .textbox {
+    display:flex;
+    flex-direction: column;
+    margin-left:2rem;
+    width:100%;
+}
+
+.vakansvakt table td {
+    vertical-align: middle;
+}
+
+.vakansvakt button {
+    margin-right: 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.vakansvakt .table-scroll td.sticky-column:nth-child(1) {
+    background-color:#e9ecef;
+}
